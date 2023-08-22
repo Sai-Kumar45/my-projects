@@ -30,3 +30,7 @@ while True:
             break  
     else:
         print("Enter valid option")
+
+class train_info():
+    def __init__(self,train_name,train_No,destination):
+        self.train_name=train_name
