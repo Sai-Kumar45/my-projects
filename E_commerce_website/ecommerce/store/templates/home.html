@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Ecommerce website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #343a40; /* Adjust the background color as needed */
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'store' %}">Digital Store</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+    </div>
+    <div>
+        <button class="btn btn-primary" onclick="window.location.href='{% url 'store' %}'">View Store</button>
+    </div>
+</nav>
+<div class="product-container">
+    <img src="https://i.pinimg.com/originals/52/aa/65/52aa65474ae709dc6dc7af09d23b0bb5.gif" alt="Product Image" class="product-image">
+    
+</div>
+
+<div class="container">
+    <br>
+    {% block content %}
+    <div class="row">
+        {% for featured_product in featured_products %}
+        <div class="col-lg-4">
+            <div class="image-text">
+            <p class="bold-text">Featured products</p>
+
+        </div>
+            <img class="thumbnail" src="{{ featured_product.image.url }}">
+            <div class="box-element product">
+                <h6><strong>{{ featured_product.name }}</strong></h6>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock content %}
+</div>
+
+</body>
+</html>
+
+
